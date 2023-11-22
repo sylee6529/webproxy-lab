@@ -237,11 +237,11 @@ int main(int argc, char **argv) {
         exit(0);
     }
 
-    listenfd = Open_listenfd(argv[1]);
-    while (1) {
+    listenfd = Open_listenfd(argv[1]);  // port 번호를 이용하여 클라이언트의 연결을 기다리는 소켓을 생성하고, 이 fd를 변수에 저장
+    while (1) {                         // 클라이언트의 연결을 무한정 기다린다
         clientlen = sizeof(struct sockaddr_storage);
-        connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);
-        Getnameinfo((SA *)&clientaddr, clientlen, client_hostname, MAXLINE, client_port, MAXLINE, 0);
+        connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);                                      // 클라이언트의 연결을 수락하고, 클라이언트 주소를 clientaddr에 저장, 이 연결의 fd를 connfd에 저장
+        Getnameinfo((SA *)&clientaddr, clientlen, client_hostname, MAXLINE, client_port, MAXLINE, 0);  // clientaddr에 저장된 클라이언트 주소를 사용하여 클라이언트의 host, port를 가져옴
         printf("Connected to (%s %s)\n", client_hostname, client_port);
         echo(connfd);
         Close(connfd);
