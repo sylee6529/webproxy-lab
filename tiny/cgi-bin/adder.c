@@ -17,8 +17,6 @@ int main(void) {
         strcpy(arg2, p + 1);
         n1 = atoi(strchr(arg1, '=') + 1);
         n2 = atoi(strchr(arg2, '=') + 1);
-        // printf("%d %d %d", n1, n2, n1 + n2);
-        // printf(content, "Type of n1: %zu bytes", sizeof(n1));
     }
 
     sprintf(content, "QUERY_STIRNG=%s", buf);
