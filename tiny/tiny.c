@@ -158,6 +158,7 @@ void serve_static(int fd, char *filename, int filesize, char *method) {
             "Content-type: %s\r\n\r\n",
             filesize, filetype);
     Rio_writen(fd, buf, strlen(buf));
+    Rio_writen(fd, buf, strlen(buf));
     printf("Response headers:\n");
     printf("%s", buf);
 
